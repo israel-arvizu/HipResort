@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const {enviorment} = require('./config');
 const isProduction = enviorment === 'production';
-const routes = require('./routes')
+const router = require('./routes');
 
 const app = express();
 app.use(morgan('dev'));
@@ -34,8 +34,9 @@ app.use(
     })
 );
 
-app.use(routes);
-
+app.use(router);
+const apiRouter = require('./routes/api');
+router.use('/api', apiRouter)
 
 
 module.exports = app;
