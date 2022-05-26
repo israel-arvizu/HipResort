@@ -3,7 +3,7 @@ const { Validator } = require('sequelize');
 const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
-  const Users = sequelize.define('User', {
+  const User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -47,20 +47,20 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
 
-    Users.prototype.toSafeObject = function() {
+    User.prototype.toSafeObject = function() {
       const { id, username, email } = this; // context will be the User instance
       return { id, username, email };
     }
 
-    Users.prototype.validatePassword = function (password) {
+    User.prototype.validatePassword = function (password) {
       return bcrypt.compareSync(password, this.hashedPassword.toString());
     }
 
-    Users.getCurrentUserById = async function (id) {
+    User.getCurrentUserById = async function (id) {
       return await User.scope('currentUser').findByPk(id);
     }
 
-    Users.login = async function ({ credential, password }) {
+    User.login = async function ({ credential, password }) {
       const { Op } = require('sequelize');
       const user = await User.scope('loginUser').findOne({
         where: {
@@ -75,7 +75,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
-    Users.signup = async function ({ username, email, password }) {
+    User.signup = async function ({ username, email, password }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
         username,
@@ -85,9 +85,10 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     }
 
-  Users.associate = function(models) {
+  User.associate = function(models) {
     // associations can be defined here
   };
-  return Users;
+
+  return User;
 
 }
