@@ -18,5 +18,4 @@ router.post('/sign-up', asyncHandler(async (req, res) => {
     });
 }))
 
-
 module.exports = router;
