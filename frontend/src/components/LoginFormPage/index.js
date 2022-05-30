@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 function LoginFormPage() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user.user);
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -31,7 +31,7 @@ function LoginFormPage() {
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <label>
+            <label class='loginLabel'>
                 Username or Email
                 <input
                     type="text"
@@ -40,7 +40,7 @@ function LoginFormPage() {
                     required
                 />
             </label>
-            <label>
+            <label class='loginLabel'>
                 Password
                 <input
                     type="password"
