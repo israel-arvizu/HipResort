@@ -34,7 +34,12 @@ module.exports = {
       },
       host_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "Users"
+          }
+        }
       },
       longitude: {
         type: Sequelize.FLOAT,

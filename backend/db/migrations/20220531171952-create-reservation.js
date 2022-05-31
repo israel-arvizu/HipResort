@@ -10,11 +10,21 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "Users"
+          }
+        }
       },
       resortId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "Resorts"
+          }
+        }
       },
       startDate: {
         type: Sequelize.DATEONLY,

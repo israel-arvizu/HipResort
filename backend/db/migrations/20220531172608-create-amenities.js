@@ -10,7 +10,12 @@ module.exports = {
       },
       resortId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "Resorts"
+          }
+        }
       },
       name: {
         type: Sequelize.STRING(25),
