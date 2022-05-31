@@ -7,7 +7,7 @@ import './SingupForm.css';
 
 function SignUpFormPage() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user.user);
+  const sessionUser = useSelector((state) => state.session.user);
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -38,7 +38,7 @@ function SignUpFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label class='signupLabel'>
+      <label className='signupLabel'>
         Email
         <input
           type="text"
@@ -47,7 +47,7 @@ function SignUpFormPage() {
           required
         />
       </label>
-      <label class='signupLabel'>
+      <label className='signupLabel'>
         Username
         <input
           type="text"

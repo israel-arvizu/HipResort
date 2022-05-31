@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet'
 
 function LoginFormPage() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user.user);
+    const sessionUser = useSelector(state => state.session.user);
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -35,7 +35,7 @@ function LoginFormPage() {
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <label class='loginLabel'>
+            <label className='loginLabel'>
                 Username or Email
                 <input
                     type="text"
@@ -44,7 +44,7 @@ function LoginFormPage() {
                     required
                 />
             </label>
-            <label class='loginLabel'>
+            <label className='loginLabel'>
                 Password
                 <input
                     type="password"
