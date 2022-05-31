@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import * as sessionActions from './store/session'
 import LoginFormPage from './components/LoginFormPage';
 import SingUpFormPage from './components/SignUpFormPage'
+import ReservationsPage from './components/Reservations/reservationsPage';
+import ResortsPage from './components/Resorts/allResortsPage';
 import Home from './components/Home'
 import Navigation from './components/Navigation';
 
@@ -27,6 +29,12 @@ function App() {
           </Route>
           <Route path="/signup" exact>
             <SingUpFormPage />
+          </Route>
+          <Route path='/reservations' exact>
+            <ReservationsPage />
+          </Route>
+          <Route path='/resort' exact>
+            <ResortsPage />
           </Route>
         </Switch>
       )}

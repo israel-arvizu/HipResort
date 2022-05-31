@@ -10,24 +10,33 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div className='loggedin-navLinks'>
+        <NavLink exact to="/reservations">Reservations</NavLink>
+        <ProfileButton user={sessionUser} />
+      </div>
     );
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <div className='left-side-head'>
+          <NavLink to="/login">Log In</NavLink>
+          <NavLink to="/signup">Sign Up</NavLink>
+        </div>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className='navigation-container'>
+        <div className='right-side-head'>
+          logo
+        </div>
+        <div className='left-side-head'>
+          <NavLink exact to="/">Home</NavLink>
+          <NavLink to="/resort">Resorts</NavLink>
+          {isLoaded && sessionLinks}
+        </div>
+    </div>
   );
 }
 
