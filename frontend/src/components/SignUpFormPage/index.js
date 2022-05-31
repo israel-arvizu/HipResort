@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Helmet } from "react-helmet";
 import * as sessionActions from "../../store/session";
 import './SingupForm.css';
 
@@ -31,6 +32,9 @@ function SignUpFormPage() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <Helmet>
+        <title>Sign-Up</title>
+      </Helmet>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>

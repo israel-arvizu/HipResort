@@ -3,6 +3,7 @@ import * as sessionActions from '../../store/session';
 import './LoginForm.css';
 import {useDispatch, useSelector} from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
 
 function LoginFormPage() {
     const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function LoginFormPage() {
 
     return (
         <form onSubmit={handleSubmit}>
+            <Helmet>
+            <title>Login</title>
+            </Helmet>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
