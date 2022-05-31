@@ -7,27 +7,37 @@ module.exports = {
       {
         email: 'demo@user.io',
         username: 'Demo-lition',
-        hashedPassword: bcrypt.hashSync('password', 10)
+        hashedPassword: bcrypt.hashSync('password', 10),
+        bio: 'I like to demolish stuff and be a nice guy overall',
+        nationality: 'American'
       },
       {
         email: 'user1@user.io',
         username: 'FakeUser1',
-        hashedPassword: bcrypt.hashSync('password2', 10)
+        hashedPassword: bcrypt.hashSync('password2', 10),
+        bio: 'I am a fake user so I dont really get alot of recognition',
+        nationality: 'Mexican'
       },
       {
         email: 'user2@user.io',
         username: 'FakeUser2',
-        hashedPassword: bcrypt.hashSync('password3', 10)
+        hashedPassword: bcrypt.hashSync('password3', 10),
+        bio: 'I am a fake user also but I get more recognition',
+        nationality: 'American'
       },
       {
         email: 'user3@user.io',
         username: 'MrBrightSide',
-        hashedPassword: bcrypt.hashSync('password4', 10)
+        hashedPassword: bcrypt.hashSync('password4', 10),
+        bio: 'I believe I am not a fake user but a great one!',
+        nationality: 'Canadian'
       },
       {
         email: 'user4@user.io',
         username: 'JohnAdam',
-        hashedPassword: bcrypt.hashSync('password5', 10)
+        hashedPassword: bcrypt.hashSync('password5', 10),
+        bio: 'Hello, I want to help you be a better person',
+        nationality: 'Albanian'
       }
     ], {});
   },
