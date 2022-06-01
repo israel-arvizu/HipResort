@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 
+const SET_RESORTS = 'resorts/ALL'
 //ACTIONS
 const setResorts = (resorts) => {
     return {
@@ -9,20 +10,27 @@ const setResorts = (resorts) => {
 }
 
 //THUNKERS
-export const loadResorts = (resorts) => async (dispatch) => {
-    const response = await csrfFetch('')
+export const loadResorts = () => async (dispatch) => {
+    console.log('HIT LOAD RESORTS REDUCER');
+    const response = await csrfFetch('/api/resorts/all');
+    const data = await response.json();
+    console.log('THIS IS DATA', data);
+    dispatch(setResorts(data));
+    return response;
 }
 
 //REDUCERS
-const initialState = { user: null};
+const initialState = { resorts: null};
 const resortReducer = (state= initialState, action) => {
     let newState;
     switch(action.type){
-        case GET_RESORTS:
+        case SET_RESORTS:
             newState = Object.assign({}, state);
-            newState.user = action.payload;
+            newState.resorts = action.payload;
             return newState;
         default:
             return state;
     }
 };
+
+export default resortReducer;
