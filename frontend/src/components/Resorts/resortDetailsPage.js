@@ -1,20 +1,24 @@
 import {useEffect} from 'react';
-import { getResort } from '../../store/resort';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams} from 'react-router-dom';
+import { useParams, useHistory} from 'react-router-dom';
 import * as resortActions from '../../store/resort';
 import BookingButton from './BookingButton';
+
 
 function ResortDetails() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    let history = useHistory()
+
+    const routeRedirect = () => {
+        history.push('/signup')
+    }
 
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
         <div className='loggedin-navLinks'>
-            <a>Logged IN</a>
             <BookingButton />
         </div>
         );
@@ -22,7 +26,9 @@ function ResortDetails() {
         sessionLinks = (
         <>
             <div className='left-side-head'>
-                <a>NOT LOGGED IN</a>
+                <button onClick={routeRedirect}>
+                    Book
+                </button>
             </div>
         </>
         );
