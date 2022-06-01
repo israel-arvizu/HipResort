@@ -6,6 +6,7 @@ import LoginFormPage from './components/LoginFormPage';
 import SingUpFormPage from './components/SignUpFormPage'
 import ReservationsPage from './components/Reservations/reservationsPage';
 import ResortsPage from './components/Resorts/allResortsPage';
+import ResortDetails from './components/Resorts/resortDetailsPage';
 import Home from './components/Home'
 import Navigation from './components/Navigation';
 
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path='/resort' exact>
             <ResortsPage />
+          </Route>
+          <Route path='/resort/:id' exact>
+            <ResortDetails />
           </Route>
         </Switch>
       )}
