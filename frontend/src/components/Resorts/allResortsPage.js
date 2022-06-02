@@ -9,7 +9,6 @@ function ResortsPage(){
     }, [dispatch])
 
     const allResorts = useSelector(state => state.resort);
-    console.log('RESORT SESSION', allResorts)
     if(!allResorts.resorts) return null;
 
     return(allResorts.resorts &&

@@ -11,7 +11,6 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <div className='loggedin-navLinks'>
-        <NavLink exact to="/reservations">Reservations</NavLink>
         <ProfileButton user={sessionUser} />
       </div>
     );

@@ -9,6 +9,7 @@ import ResortsPage from './components/Resorts/allResortsPage';
 import ResortDetails from './components/Resorts/resortDetailsPage';
 import Home from './components/Home'
 import Navigation from './components/Navigation';
+import ProfilePage from './components/Profile';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path='/resort/:id' exact>
             <ResortDetails />
+          </Route>
+          <Route path='/user' exact>
+            <ProfilePage />
           </Route>
         </Switch>
       )}

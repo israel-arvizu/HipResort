@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
@@ -18,7 +18,6 @@ function ProfileButton({ user }) {
 
     const closeMenu = () => {
       setShowMenu(false);
-      history.push('/');
     };
 
     document.addEventListener('click', closeMenu);
@@ -29,6 +28,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/')
 
   };
 
@@ -41,6 +41,9 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
+          <li>
+            <NavLink to="/user">Profile</NavLink>
+          </li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>
