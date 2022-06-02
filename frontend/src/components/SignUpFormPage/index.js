@@ -13,7 +13,7 @@ function SignUpFormPage() {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
-  const [nationality, setNationality] = useState("")
+  const [nationality, setNationality] = useState("American")
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -71,7 +71,7 @@ function SignUpFormPage() {
       <label className='signupLabel'>
         About You!
         <input
-          type="textarea"
+          type="textArea"
           value={bio}
           onChange={(e) => setBio(e.target.value)}
           required
