@@ -15,11 +15,21 @@ function ResortDetails() {
         history.push('/signup')
     }
 
+    useEffect(() =>{
+        dispatch(resortActions.getResort(id))
+    }, [dispatch])
+
+    const resortObj = useSelector(state => state.resort.singleResort);
+    if(!resortObj) return null;
+    const resort = resortObj.resort;
+    const host = resortObj.host;
+    const amenities = resortObj.amenities;
+
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
         <div className='loggedin-navLinks'>
-            <BookingButton />
+            <BookingButton resort={resort} id={sessionUser.id}/>
         </div>
         );
     } else {
@@ -33,16 +43,6 @@ function ResortDetails() {
         </>
         );
     }
-
-    useEffect(() =>{
-        dispatch(resortActions.getResort(id))
-    }, [dispatch])
-
-    const resortObj = useSelector(state => state.resort.singleResort);
-    if(!resortObj) return null;
-    const resort = resortObj.resort;
-    const host = resortObj.host;
-    const amenities = resortObj.amenities;
 
     return(
         <div className='details-main-container'>
@@ -61,7 +61,6 @@ function ResortDetails() {
                                 return (
                                     <li key={amenitie.id}>
                                         {amenitie.name}
-                                        //CHANGE THIS BACK TO pictureURl
                                         {/* <img src={amenitie.name} alt="Amenitie picture"/> */}
                                     </li>
                                 )

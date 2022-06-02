@@ -1,7 +1,7 @@
 
 
 
-function ReservationsPage ({ user }) {
+function ReservationsPage () {
 
     return (
         <div className="resevations-body">

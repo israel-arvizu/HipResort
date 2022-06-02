@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const sessionRouter = require('./sessions.js');
 const usersRouter = require('./users.js');
-const resortRouter = require('./resorts.js')
+const resortRouter = require('./resorts.js');
+const reservationRouter = require('./reservations.js');
 
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth');
@@ -12,7 +13,7 @@ const { requireAuth } = require('../../utils/auth.js');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/resorts', resortRouter);
-
+router.use('/reservation', reservationRouter);
 
 router.get('/set-token-cookie', asyncHandler(async (_req, res) => {
     const user = await User.findOne({
