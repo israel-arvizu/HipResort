@@ -1,10 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reservationActions from '../../store/reservations';
 import * as resortActions from '../../store/resort';
+import ReservationModal from './reservationModal';
 
 function ReservationsPage () {
     const dispatch = useDispatch();
+    const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     const sessionReservation = useSelector(state => state.reservations.reservations);
     const sessionResort = useSelector(state => state.resort.resorts);
@@ -29,11 +31,17 @@ function ReservationsPage () {
                     let resort = normalizedResorts[reservation.resortId];
                     return(
                         <div className='single-reservation' key={reservation.confirmationNumber}>
-                            <img src={resort.imageUrl} />
-                            <h3>{resort.name}</h3>
-                            <a> Check-In Date: {reservation.startDate}</a>
-                            <a> Check-Out Date: {reservation.endDate}</a>
-                            <span> Confirmation Number: {reservation.confirmationNumber}</span>
+                            <div>
+                                <img src={resort.imageUrl} />
+                                <h3>{resort.name}</h3>
+                                <a> Check-In Date: {reservation.startDate}</a>
+                                <a> Check-Out Date: {reservation.endDate}</a>
+                                <span> Confirmation Number: {reservation.confirmationNumber}</span>
+                                <button className="openReservationDetails" onClick={() => {setShowModal(true)}}>Edit</button>
+                            </div>
+                            <div>
+                            {showModal && <ReservationModal setShowModal={setShowModal}/>}
+                            </div>
                         </div>
                     )
                 })}
