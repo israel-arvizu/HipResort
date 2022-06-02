@@ -11,6 +11,9 @@ function SignUpFormPage() {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
+  const [nationality, setNationality] = useState("American")
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -21,7 +24,7 @@ function SignUpFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ email, username, name, bio, nationality, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -55,6 +58,32 @@ function SignUpFormPage() {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
+      </label>
+      <label className='signupLabel'>
+        Name
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </label>
+      <label className='signupLabel'>
+        About You!
+        <input
+          type="textArea"
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          required
+        />
+      </label>
+      <label className='signupLabel'>
+        Nationality
+        <select onChange={(e) => setNationality(e.target.value)}>
+          <option selected value="American">USA</option>
+          <option value="Mexican">Mexico</option>
+          <option value="Canadian">Canada</option>
+        </select>
       </label>
       <label>
         Password

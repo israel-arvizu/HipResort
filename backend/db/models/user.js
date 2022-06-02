@@ -5,6 +5,11 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
+    name:
+    {
+      type: DataTypes.STRING(30),
+      allowNull: false
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -39,12 +44,12 @@ module.exports = (sequelize, DataTypes) => {
     {
       type: DataTypes.STRING,
       allowNull: false
-    },
+    }
   },
   {
     defaultScope: {
       attributes: {
-        exclude: ['hashedPassword', 'email', 'bio', 'natioality', 'createdAt', 'updatedAt']
+        exclude: ['hashedPassword', 'email', 'name', 'bio', 'natioality', 'createdAt', 'updatedAt']
       }
     },
     scopes: {
@@ -58,8 +63,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.prototype.toSafeObject = function() {
-    const { id, username, email, bio, nationality } = this; // context will be the User instance
-    return { id, username, email, bio, nationality };
+    const { id, username, name, email, bio, nationality } = this; // context will be the User instance
+    return { id, username, name, email, bio, nationality };
   }
 
   User.prototype.validatePassword = function (password) {
@@ -85,14 +90,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ email, username, name, bio, nationality, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
-      hashedPassword,
+      name,
       bio,
-      nationality
+      nationality,
+      hashedPassword,
     });
     return await User.scope('currentUser').findByPk(user.id);
   }
