@@ -28,8 +28,8 @@ function ReservationsPage () {
             <div className="trips-container">
                 {sessionReservation.map((reservation) => {
                     let resort = normalizedResorts[reservation.resortId];
-                    const checkInDate = reservation.startDate.substr(8, 2) + '/'+ reservation.startDate.substr(5, 2) + '/' + reservation.startDate.substr(0, 4)
-                    const checkOutDate = reservation.endDate.substr(8, 2) + '/'+ reservation.endDate.substr(5, 2) + '/' + reservation.endDate.substr(0, 4)
+                    const checkInDate =  reservation.startDate.substr(5, 2) + '/' + reservation.startDate.substr(8, 2) + '/' + reservation.startDate.substr(0, 4)
+                    const checkOutDate = reservation.endDate.substr(5, 2) + '/' + reservation.endDate.substr(8, 2) + '/'+ reservation.endDate.substr(0, 4)
                     return(
                         <div>
                             <ReservationComponent reservation={reservation} resort={resort} checkInDate={checkInDate}
