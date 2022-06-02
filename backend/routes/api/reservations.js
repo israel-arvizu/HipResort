@@ -31,4 +31,29 @@ router.get('/user/:id(\\d+)', asyncHandler(async (req, res) => {
     return res.json(reservations)
 
 }))
+
+router.delete('/', asyncHandler(async (req, res) => {
+    const {resortId, userId, confirmationNumber} = req.body;
+    const reservation = db.Reservation.findOne({
+        where: {
+            userId: userId,
+            resortId: resortId,
+            confirmationNumber: confirmationNumber
+        }
+    });
+
+    if(reservation){
+        reservation.destroy();
+        const reservations = await db.Reservation.findAll({
+            where: {
+                userId: userId
+            }
+        });
+        return res.json(reservations)
+    }else{
+        console.log('Error, couldnt destroy succesffuly');
+    }
+    return res.json("ERROR COULND DESTROY")
+}))
+
 module.exports = router;

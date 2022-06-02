@@ -1,18 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reservationActions from '../../store/reservations';
 import * as resortActions from '../../store/resort';
-import ReservationModal from './reservationModal';
+import ReservationComponent from './reservation';
 
 function ReservationsPage () {
     const dispatch = useDispatch();
-    const [showModal, setShowModal] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     const sessionReservation = useSelector(state => state.reservations.reservations);
     const sessionResort = useSelector(state => state.resort.resorts);
-
+    const userId = sessionUser.id
     useEffect(() => {
-        dispatch(reservationActions.loadReservations(sessionUser.id))
+        dispatch(reservationActions.loadReservations(userId))
         dispatch(resortActions.loadResorts())
     }, [dispatch])
 
@@ -21,7 +20,6 @@ function ReservationsPage () {
 
     let normalizedResorts = {};
     sessionResort.forEach((resort) => normalizedResorts[resort.id] = resort);
-    console.log(normalizedResorts);
 
     return (
         <div className="resevations-body">
@@ -29,19 +27,12 @@ function ReservationsPage () {
             <div className="trips-container">
                 {sessionReservation.map((reservation) => {
                     let resort = normalizedResorts[reservation.resortId];
+                    const checkInDate = reservation.startDate.substr(8, 2) + '/'+ reservation.startDate.substr(5, 2) + '/' + reservation.startDate.substr(0, 4)
+                    const checkOutDate = reservation.endDate.substr(8, 2) + '/'+ reservation.endDate.substr(5, 2) + '/' + reservation.endDate.substr(0, 4)
                     return(
-                        <div className='single-reservation' key={reservation.confirmationNumber}>
-                            <div>
-                                <img src={resort.imageUrl} />
-                                <h3>{resort.name}</h3>
-                                <a> Check-In Date: {reservation.startDate}</a>
-                                <a> Check-Out Date: {reservation.endDate}</a>
-                                <span> Confirmation Number: {reservation.confirmationNumber}</span>
-                                <button className="openReservationDetails" onClick={() => {setShowModal(true)}}>Edit</button>
-                            </div>
-                            <div>
-                            {showModal && <ReservationModal setShowModal={setShowModal}/>}
-                            </div>
+                        <div>
+                            <ReservationComponent reservation={reservation} resort={resort} checkInDate={checkInDate}
+                            checkOutDate={checkOutDate} userId={userId}/>
                         </div>
                     )
                 })}
