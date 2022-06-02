@@ -32,9 +32,10 @@ router.get('/user/:id(\\d+)', asyncHandler(async (req, res) => {
 
 }))
 
+//DELETE RESERVATION - DELETE REQUEST TO '/api/reservation
 router.delete('/', asyncHandler(async (req, res) => {
     const {resortId, userId, confirmationNumber} = req.body;
-    const reservation = db.Reservation.findOne({
+    const reservation = await db.Reservation.findOne({
         where: {
             userId: userId,
             resortId: resortId,
@@ -43,17 +44,15 @@ router.delete('/', asyncHandler(async (req, res) => {
     });
 
     if(reservation){
-        reservation.destroy();
+        await reservation.destroy();
         const reservations = await db.Reservation.findAll({
             where: {
                 userId: userId
             }
         });
         return res.json(reservations)
-    }else{
-        console.log('Error, couldnt destroy succesffuly');
     }
-    return res.json("ERROR COULND DESTROY")
+    return res.error("ERROR COULND DESTROY");
 }))
 
 module.exports = router;

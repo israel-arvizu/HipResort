@@ -9,11 +9,12 @@ function ReservationsPage () {
     const sessionUser = useSelector(state => state.session.user);
     const sessionReservation = useSelector(state => state.reservations.reservations);
     const sessionResort = useSelector(state => state.resort.resorts);
-    const userId = sessionUser.id
+
     useEffect(() => {
-        dispatch(reservationActions.loadReservations(userId))
+        dispatch(reservationActions.loadReservations(sessionUser.id))
         dispatch(resortActions.loadResorts())
     }, [dispatch])
+
 
     if(sessionReservation === null) return null;
     if(sessionResort === null) return null;
@@ -32,7 +33,7 @@ function ReservationsPage () {
                     return(
                         <div>
                             <ReservationComponent reservation={reservation} resort={resort} checkInDate={checkInDate}
-                            checkOutDate={checkOutDate} userId={userId}/>
+                            checkOutDate={checkOutDate} userId={sessionUser.id}/>
                         </div>
                     )
                 })}

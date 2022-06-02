@@ -9,13 +9,10 @@ function ReservationModal({setShowModal, resort, reservation, inDate, outDate, u
     const history = useHistory();
     const confirmationNumber = reservation.confirmationNumber;
 
-    const deleteReservation = () => {
-        console.log('Entered Thunker');
+    const deleteReservationFunc = () => {
         const resortId = resort.id;
-        console.log(resortId);
         dispatch(deleteReservation({resortId, userId, confirmationNumber}))
-        console.log('Exited dispatch');
-        history.push('/');
+        setShowModal(false)
     }
 
     return(
@@ -34,8 +31,7 @@ function ReservationModal({setShowModal, resort, reservation, inDate, outDate, u
                 </div>
                 <div className='details-bottom'>
                     Reservation
-                    <button >Edit</button>
-                    <button onClick={deleteReservation}>Cancel Reservation</button>
+                    <button onClick={deleteReservationFunc}>Cancel Reservation</button>
                 </div>
             </div>
         </div>

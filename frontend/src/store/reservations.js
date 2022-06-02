@@ -42,7 +42,6 @@ export const loadReservations = (id) => async (dispatch) => {
 }
 
 export const deleteReservation = ({resortId, userId, confirmationNumber}) => async (dispatch) => {
-    console.log('Entered Thunker in Reducer')
     const response = await csrfFetch('/api/reservation', {
         method: 'DELETE',
         body: JSON.stringify({
@@ -51,10 +50,9 @@ export const deleteReservation = ({resortId, userId, confirmationNumber}) => asy
             confirmationNumber
         })
     });
-    console.log('This is Response', response)
     const data = await response.json();
     dispatch(loadAllReservation(data));
-    return response;
+    return data;
 }
 //REDUCERS
 const initialState = {reservations: null}
