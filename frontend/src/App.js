@@ -10,6 +10,7 @@ import ResortDetails from './components/Resorts/resortDetailsPage';
 import Home from './components/Home'
 import Navigation from './components/Navigation';
 import ProfilePage from './components/Profile';
+import HostPage from './components/HostPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path='/user' exact>
             <ProfilePage />
+          </Route>
+          <Route path='/user/resort' exact>
+            <HostPage />
           </Route>
         </Switch>
       )}
