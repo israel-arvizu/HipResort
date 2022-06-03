@@ -43,7 +43,6 @@ export const loadResorts = () => async (dispatch) => {
 };
 
 export const loadHostResorts = (id) => async (dispatch) => {
-    console.log('GOT INTO HOST RESORT');
     const response = await csrfFetch(`/api/resorts/host/${id}`);
     const data = await response.json();
     dispatch(setHostResorts(data));
@@ -78,8 +77,37 @@ export const createResort = (resort) => async (dispatch) => {
     });
 
     const data = await response.json();
-    dispatch(addResort(data));
+    dispatch(setHostResorts(data));
     return response;
+}
+
+export const editResort = (resort) => async (dispatch) => {
+    console.log('Made it to edit Resort')
+    const {resortId, resortName, resortPrice, resortCapacity,
+        resortDetails, resortCity, resortState, resortLatitude, resortLongitude,
+        resortImage, userId} = resort;
+        console.log('This is Latitude & Long', resortLatitude, resortLongitude)
+        const response = await csrfFetch('/api/resorts/edit', {
+            method: 'PUT',
+            body: JSON.stringify({
+                resortId,
+                name: resortName,
+                price: resortPrice,
+                capacity: resortCapacity,
+                details: resortDetails,
+                city: resortCity,
+                state: resortState,
+                latitude: resortLatitude,
+                longitude: resortLongitude,
+                imageUrl: resortImage,
+                id: userId
+            })
+        });
+
+        const data = await response.json();
+        dispatch(addResort(data));
+        console.log(`Finished Editing ${resortName}`)
+        return response;
 }
 
 //REDUCERS

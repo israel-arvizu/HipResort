@@ -4,8 +4,6 @@ import { useHistory } from 'react-router-dom';
 import * as resortActions from '../../store/resort';
 import { Modal } from '../../context/Modal';
 import ResortAddModal from './ResortAddModal';
-import ResortEdit from "./ResortEditModa";
-import ResortEditList from "./ResortEditList";
 
 function HostPage() {
     const sessionUser = useSelector(state => state.session.user);
@@ -17,6 +15,11 @@ function HostPage() {
     useEffect(() => {
         dispatch(resortActions.loadHostResorts(sessionUser.id));
     }, [dispatch])
+
+    const resortDetails = (resortId) => {
+        history.push(`/resort/edit/${resortId}`);
+    }
+
 
     const allResorts = useSelector(state => state.resort.hostResorts);
     if(!allResorts) return null;
@@ -36,12 +39,6 @@ function HostPage() {
                 <div className="delete-resort-container">
                     <h2>Property out of service?</h2>
                     <a>Delete Resorts here!</a>
-                    <button className="editResort Btn" onClick={() => setEditModal(true)}>Resort List</button>
-                    {editModal &&  (
-                    <Modal onClose={() => {setEditModal(false)}}>
-                        <ResortEditList setEditModal={setEditModal} allResorts={allResorts} userId={sessionUser.id}/>
-                    </Modal>
-                    )}
                 </div>
             </div>
             <div className="host-left-container">
@@ -60,7 +57,10 @@ function HostPage() {
                                                 <li>{resort.price} per night</li>
                                                 <li>Capacity: {resort.capacity}</li>
                                                 <li>{resort.city}, {resort.state}</li>
-
+                                                <button className="editResort Btn" onClick={() => resortDetails(resort.id)}>Resort Detials</button>
+                                                {/* {editModal &&  (
+                                                    <ResortEdit setEditModal={setEditModal} resort={resort} userId={sessionUser.id}/>
+                                                )} */}
                                             </ul>
                                         </div>
                                     </li>

@@ -85,6 +85,7 @@ const resortCreationValidation = [
 
 //TO CREATE A NEW RESORT - POST REQUEST to '/api/resorts/create
 router.post('/create', resortCreationValidation, asyncHandler(async (req, res, next) => {
+    console.log('create ROute')
     const {name, price, capacity, details, city, state, latitude, longitude, image, id} = req.body;
     await db.Resort.create({
         name,
@@ -104,6 +105,34 @@ router.post('/create', resortCreationValidation, asyncHandler(async (req, res, n
         }
     })
     return res.json(hostResorts);
+}))
+
+router.put('/edit', asyncHandler(async (req, res, next) => {
+    console.log('edit route')
+    const {resortId, name, price, capacity, details, city, state, latitude, longitude, imageUrl, id} = req.body;
+    console.log('This is latitude', latitude, "this is longitude", longitude)
+    const resort = await db.Resort.findByPk(resortId);
+    if(!resort) return res.errors('Couldnt find requested resort');
+
+    if(id === resort.host_id){
+        resort.name = name;
+        resort.price = price;
+        resort.capacity = capacity;
+        resort.details = details;
+        resort.city = city;
+        resort.state = state;
+        resort.latitude = latitude;
+        resort.longitude = longitude;
+        resort.imageUrl = imageUrl;
+        await resort.save();
+    }
+
+    const hostResorts = await db.Resort.findAll({
+        where: {
+            host_id: id
+        }
+    })
+    return res.json(hostResorts)
 }))
 
 module.exports = router

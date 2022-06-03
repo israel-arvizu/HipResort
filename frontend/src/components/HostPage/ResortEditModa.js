@@ -1,11 +1,21 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createResort } from '../../store/resort';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import { editResort } from '../../store/resort';
 
-function ResortEdit({setFormEdit, userId, resort}){
+function ResortEdit(){
     const dispatch = useDispatch();
     const history = useHistory();
+    let { id } = useParams()
+    const sessionUser = useSelector(state => state.session.user);
+    const allResorts = useSelector(state => state.resort.hostResorts);
+    let normalizedHostResorts = {};
+    allResorts.forEach((resort) => {
+        normalizedHostResorts[resort.id] = resort
+    })
+    let resort = normalizedHostResorts[id];
+    const userId = sessionUser.id;
+
     const [resortName, setResortName] = useState(resort.name);
     const [resortPrice, setResortPrice] = useState(resort.price);
     const [resortCapacity, setResortCapacity] = useState(resort.capacity);
@@ -20,7 +30,8 @@ function ResortEdit({setFormEdit, userId, resort}){
     const handleSubmitEdit = (e) =>{
         e.preventDefault()
         setErrors([]);
-        dispatch(createResort({resortName, resortPrice, resortCapacity,
+        const resortId = resort.id
+        dispatch(editResort({resortId, resortName, resortPrice, resortCapacity,
             resortDetails, resortCity, resortState, resortLatitude, resortLongitude,
             resortImage, userId})).catch(async (res) => {
                 console.log(res.json());
@@ -38,8 +49,15 @@ function ResortEdit({setFormEdit, userId, resort}){
         setResortLongitude(0.00);
         setResortImage("");
 
-        setFormEdit(false)
+        history.push('/user/resort')
     }
+
+    // const deleteResort= () => {
+    //     dispatch(deleteResort({}))
+    // }
+
+    if(!allResorts) return null;
+
 
     return (
         <div className="modalBackground">
@@ -137,10 +155,10 @@ function ResortEdit({setFormEdit, userId, resort}){
                                 required
                             />
                         </label>
-                        <button type='submit' className='submitResortAdd'>Add</button>
+                        <button type='submit' className='submitResortAdd'>Edit Resort</button>
                     </form>
                 </div>
-                <button onClick={() => setFormEdit(false)}>Cancel</button>
+                <button onCLick={() => deleteResort()} className='deleteResort Btn'>Edit Resort</button>
             </div>
         </div>
     )
