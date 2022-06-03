@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const SET_RESORTS = 'resorts/ALL';
 const SET_SINGLE = 'resort/ONE';
+const SET_HOST_RESORTS = 'resort/host/ALL'
 
 //ACTIONS
 const setResorts = (resorts) => {
@@ -11,6 +12,12 @@ const setResorts = (resorts) => {
     }
 };
 
+const setHostResorts = (resorts) => {
+    return {
+        type: SET_HOST_RESORTS,
+        payload: resorts
+    }
+}
 
 const setSingle = (resort) => {
     return {
@@ -27,11 +34,17 @@ export const loadResorts = () => async (dispatch) => {
     return response;
 };
 
+export const loadHostResorts = (id) => async (dispatch) => {
+    console.log('GOT INTO HOST RESORT');
+    const response = await csrfFetch(`/api/resorts/host/${id}`);
+    const data = await response.json();
+    dispatch(setHostResorts(data));
+    return response;
+}
+
 export const getResort = (id) => async (dispatch) => {
-    console.log('got in reducer')
     const response = await csrfFetch(`/api/resorts/${id}`);
     const data = await response.json();
-    console.log('THIS IS DATA', data)
     dispatch(setSingle(data));
     return response
 };
@@ -48,6 +61,10 @@ const resortReducer = (state= initialState, action) => {
         case SET_SINGLE:
             newState = Object.assign({}, state);
             newState.singleResort = action.payload;
+            return newState;
+        case SET_HOST_RESORTS:
+            newState = Object.assign({}, state);
+            newState.hostResorts = action.payload;
             return newState;
         default:
             return state;

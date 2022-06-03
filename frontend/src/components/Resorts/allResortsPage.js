@@ -17,20 +17,20 @@ function ResortsPage(){
             <ul>
                 {allResorts.resorts.map((resort) => {
                     return(
-                    <a href={`/resort/${resort.id}`}>
-                        <li key={resort.id}>
-                            <div className='resorts-container-sec'>
-                                <img src={resort.imageUrl} alt="Resort Image"></img>
-                                <span>{resort.name}</span>
-                                <ul>
-                                    <li>{resort.price} per night</li>
-                                    <li>Capacity: {resort.capacity}</li>
-                                    <li>{resort.city}, {resort.state}</li>
+                        <a href={`/resort/${resort.id}`}>
+                            <li key={resort.id}>
+                                <div className='resorts-container-sec'>
+                                    <img src={resort.imageUrl} alt="Resort Image"></img>
+                                    <span>{resort.name}</span>
+                                    <ul>
+                                        <li>{resort.price} per night</li>
+                                        <li>Capacity: {resort.capacity}</li>
+                                        <li>{resort.city}, {resort.state}</li>
 
-                                </ul>
-                            </div>
-                        </li>
-                    </a>
+                                    </ul>
+                                </div>
+                            </li>
+                        </a>
                     )
             })}
             </ul>
