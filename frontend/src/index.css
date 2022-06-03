@@ -1,1 +1,5 @@
 /* TODO Add site wide styles */
+body{
+    font-family: 'Rubik', sans-serif;
+    background-color: rgb(243,242,239);
+}

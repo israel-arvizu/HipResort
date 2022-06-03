@@ -30,4 +30,14 @@ router.get('/:id(\\d+)', asyncHandler( async (req,res, next) => {
     return res.json(ResortandHost)
 }));
 
+router.get('/host/:id(\\d+)', asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+    const resort = await db.Resort.findAll({
+        where: {
+            host_id: id
+        }
+    });
+
+    return res.json(resort);
+}))
 module.exports = router

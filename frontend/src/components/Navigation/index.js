@@ -10,18 +10,19 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div className='loggedin-navLinks'>
-        <NavLink exact to="/reservations">Reservations</NavLink>
+      <div className='nav-links-cont'>
         <ProfileButton user={sessionUser} />
       </div>
     );
   } else {
     sessionLinks = (
       <>
-        <div className='left-side-head'>
-          <NavLink to="/login">Log In</NavLink>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </div>
+        <div className='nav-links-cont'>
+            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/login">Log In</NavLink>
+          </div>
+          <div className='nav-links-cont'>
+            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} to="/signup">Sign Up</NavLink>
+          </div>
       </>
     );
   }
@@ -29,11 +30,15 @@ function Navigation({ isLoaded }){
   return (
     <div className='navigation-container'>
         <div className='right-side-head'>
-          logo
+          <p id='nav-logo'>HipResort</p>
         </div>
         <div className='left-side-head'>
-          <NavLink exact to="/">Home</NavLink>
-          <NavLink to="/resort">Resorts</NavLink>
+          <div className='nav-links-cont'>
+            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} classname='nav-navLink' exact to="/">Home</NavLink>
+          </div>
+          <div className='nav-links-cont'>
+            <NavLink style={{ color: 'inherit', textDecoration: 'inherit'}} classname='nav-navLink' to="/resort">Resorts</NavLink>
+          </div>
           {isLoaded && sessionLinks}
         </div>
     </div>
