@@ -1,10 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
+import { useHistory } from 'react-router-dom';
 import * as resortActions from '../../store/resort';
+import { Modal } from '../../context/Modal';
+import ResortAddModal from './ResortAddModal';
+import ResortEdit from "./ResortEditModa";
+import ResortEditList from "./ResortEditList";
 
 function HostPage() {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory();
+    const [showModal, setShowModal] = useState(false)
+    const [editModal, setEditModal] = useState(false)
 
     useEffect(() => {
         dispatch(resortActions.loadHostResorts(sessionUser.id));
@@ -18,12 +26,22 @@ function HostPage() {
             <div className="host-right-container">
                 <div className="create-resort-container">
                     <h2>Add Another Resort</h2>
-                    <button>Add Resort</button>
+                    <button className="addResort Btn" onClick={() => setShowModal(true)}>Add Resort</button>
+                  {showModal &&  (
+                  <Modal onClose={() => {setShowModal(false)}}>
+                        <ResortAddModal userId={sessionUser.id} setShowModal={setShowModal}/>
+                    </Modal>
+                    )}
                 </div>
                 <div className="delete-resort-container">
                     <h2>Property out of service?</h2>
                     <a>Delete Resorts here!</a>
-                    <button>Resort List</button>
+                    <button className="editResort Btn" onClick={() => setEditModal(true)}>Resort List</button>
+                    {editModal &&  (
+                    <Modal onClose={() => {setEditModal(false)}}>
+                        <ResortEditList setEditModal={setEditModal} allResorts={allResorts} userId={sessionUser.id}/>
+                    </Modal>
+                    )}
                 </div>
             </div>
             <div className="host-left-container">
