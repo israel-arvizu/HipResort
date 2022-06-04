@@ -11,6 +11,7 @@ import Home from './components/Home'
 import Navigation from './components/Navigation';
 import ProfilePage from './components/Profile';
 import HostPage from './components/HostPage';
+import ResortEdit from './components/HostPage/ResortEditModa';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path='/resort/:id' exact>
             <ResortDetails />
+          </Route>
+          <Route path='/resort/edit/:id' exact>
+            <ResortEdit />
           </Route>
           <Route path='/user' exact>
             <ProfilePage />

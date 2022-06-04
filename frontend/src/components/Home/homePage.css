@@ -1,0 +1,122 @@
+.body-home-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-banner-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%
+
+}
+
+.homeheader-subheading{
+    font-weight: 400px;
+    font-size: large;
+}
+
+.homeheader-mainHead{
+    font-weight: 600px;
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+.main-picture-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-picture{
+    width: 800px;
+    height: 330px;
+    object-fit: cover;
+    border: 1px transparent;
+    border-radius: 10px;
+}
+
+.banner-sec-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}
+.content-container-1{
+    margin: 2%;
+    width: 80%;
+    background-color: #FFD365;
+    border-radius: 15px;
+}
+
+.content-container-1:hover{
+    position: relative;
+    bottom: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content-container-1.secondHome{
+    background-color: #C5CBE3;
+}
+
+.content-label-1{
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    padding: 10px 20px 20px 20px;
+}
+
+.explore-image-home{
+    width: 600px;
+    height: 330px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.top-explore-text{
+    margin-top: 0%;
+    font-weight: 600;
+    color: #88733e;
+}
+
+.top-explore-text.firstHomeBtn{
+    color: #5369c4;
+}
+
+.bottom-explore-bold-text{
+    max-width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 130%;
+    color: #88733e;
+}
+
+.bottom-explore-bold-text.firstHomeBtn{
+    color: #5369c4;
+}
+
+.explore-content-text-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+}
+
+.button-explore-main{
+    border: 1px transparent;
+    border-radius: 25px;
+    height: 50%;
+    width: 100%;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    color: #a18849;
+}
+
+.button-explore-main.secondHomeBtn{
+    color: #5369c4;
+}

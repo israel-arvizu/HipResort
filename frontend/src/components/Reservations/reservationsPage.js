@@ -31,7 +31,7 @@ function ReservationsPage () {
                     const checkInDate =  reservation.startDate.substr(5, 2) + '/' + reservation.startDate.substr(8, 2) + '/' + reservation.startDate.substr(0, 4)
                     const checkOutDate = reservation.endDate.substr(5, 2) + '/' + reservation.endDate.substr(8, 2) + '/'+ reservation.endDate.substr(0, 4)
                     return(
-                        <div>
+                        <div className='trip-component-container'>
                             <ReservationComponent reservation={reservation} resort={resort} checkInDate={checkInDate}
                             checkOutDate={checkOutDate} userId={sessionUser.id}/>
                         </div>
