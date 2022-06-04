@@ -82,11 +82,10 @@ export const createResort = (resort) => async (dispatch) => {
 }
 
 export const editResort = (resort) => async (dispatch) => {
-    console.log('Made it to edit Resort')
     const {resortId, resortName, resortPrice, resortCapacity,
         resortDetails, resortCity, resortState, resortLatitude, resortLongitude,
         resortImage, userId} = resort;
-        console.log('This is Latitude & Long', resortLatitude, resortLongitude)
+
         const response = await csrfFetch('/api/resorts/edit', {
             method: 'PUT',
             body: JSON.stringify({
@@ -106,8 +105,21 @@ export const editResort = (resort) => async (dispatch) => {
 
         const data = await response.json();
         dispatch(addResort(data));
-        console.log(`Finished Editing ${resortName}`)
         return response;
+}
+
+export const deleteResort = (resortId, userId) => async (dispatch) => {
+    const response = await csrfFetch('/api/resorts/delete', {
+        method: 'DELETE',
+        body: JSON.stringify({
+            resortId,
+            userId
+        })
+    });
+
+    const data = await response.json();
+    dispatch(setHostResorts(data));
+    return response;
 }
 
 //REDUCERS

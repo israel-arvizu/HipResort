@@ -10,9 +10,8 @@ function HostPage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [showModal, setShowModal] = useState(false)
-    const [editModal, setEditModal] = useState(false)
 
-    useEffect(() => {
+    useEffect(() =>{
         dispatch(resortActions.loadHostResorts(sessionUser.id));
     }, [dispatch])
 
@@ -47,8 +46,6 @@ function HostPage() {
                     <ul>
                         {allResorts.map((resort) => {
                             return(
-                                //CHANGE THIS Anchor Tag to a MODAL to edit Resort
-                                // <a href={`/resort/${resort.id}`}>
                                     <li key={resort.id}>
                                         <div className='resorts-container-sec'>
                                             <img src={resort.imageUrl} alt="Resort Image"></img>
@@ -58,13 +55,9 @@ function HostPage() {
                                                 <li>Capacity: {resort.capacity}</li>
                                                 <li>{resort.city}, {resort.state}</li>
                                                 <button className="editResort Btn" onClick={() => resortDetails(resort.id)}>Resort Detials</button>
-                                                {/* {editModal &&  (
-                                                    <ResortEdit setEditModal={setEditModal} resort={resort} userId={sessionUser.id}/>
-                                                )} */}
                                             </ul>
                                         </div>
                                     </li>
-                                // </a>
                             )
                         })}
                     </ul>

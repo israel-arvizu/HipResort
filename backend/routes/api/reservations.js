@@ -52,7 +52,7 @@ router.delete('/', asyncHandler(async (req, res) => {
         });
         return res.json(reservations)
     }
-    return res.error("ERROR COULND DESTROY");
+    return res.error("ERROR COULDNT DESTROY");
 }))
 
 module.exports = router;

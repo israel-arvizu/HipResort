@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { editResort } from '../../store/resort';
+import * as resortActions from '../../store/resort'
 
 function ResortEdit(){
     const dispatch = useDispatch();
@@ -9,6 +10,7 @@ function ResortEdit(){
     let { id } = useParams()
     const sessionUser = useSelector(state => state.session.user);
     const allResorts = useSelector(state => state.resort.hostResorts);
+
     let normalizedHostResorts = {};
     allResorts.forEach((resort) => {
         normalizedHostResorts[resort.id] = resort
@@ -26,11 +28,11 @@ function ResortEdit(){
     const [resortLongitude, setResortLongitude] = useState(resort.longitude)
     const [resortImage, setResortImage] = useState(resort.imageUrl)
     const [errors, setErrors] = useState([]);
+    const resortId = resort.id
 
     const handleSubmitEdit = (e) =>{
         e.preventDefault()
         setErrors([]);
-        const resortId = resort.id
         dispatch(editResort({resortId, resortName, resortPrice, resortCapacity,
             resortDetails, resortCity, resortState, resortLatitude, resortLongitude,
             resortImage, userId})).catch(async (res) => {
@@ -49,12 +51,13 @@ function ResortEdit(){
         setResortLongitude(0.00);
         setResortImage("");
 
-        history.push('/user/resort')
+        history.push('/user/resort');
     }
 
-    // const deleteResort= () => {
-    //     dispatch(deleteResort({}))
-    // }
+    const deleteResort = () => {
+        dispatch(resortActions.deleteResort(resortId, userId));
+        history.push('/user/resort');
+    }
 
     if(!allResorts) return null;
 
@@ -157,8 +160,11 @@ function ResortEdit(){
                         </label>
                         <button type='submit' className='submitResortAdd'>Edit Resort</button>
                     </form>
+                    <div>
+                        <button onClick={deleteResort}>Delete Resort</button>
+                        <button onClick={() => {history.push('/user/resort')}}>Cancel</button>
+                    </div>
                 </div>
-                <button onCLick={() => deleteResort()} className='deleteResort Btn'>Edit Resort</button>
             </div>
         </div>
     )

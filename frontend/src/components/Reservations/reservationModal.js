@@ -1,12 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { deleteReservation } from '../../store/reservations';
 // import './reservationModal.css'
 
 function ReservationModal({setShowModal, resort, reservation, inDate, outDate, userId}) {
     const dispatch = useDispatch();
-    const history = useHistory();
     const confirmationNumber = reservation.confirmationNumber;
 
     const deleteReservationFunc = () => {

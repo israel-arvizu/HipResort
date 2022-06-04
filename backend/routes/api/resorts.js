@@ -6,6 +6,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const db = require('../../db/models');
+const { Resort } = require('../../db/models')
 
 
 //TO GET RESORTS - GET REQUEST to '/api/resorts/all
@@ -107,6 +108,7 @@ router.post('/create', resortCreationValidation, asyncHandler(async (req, res, n
     return res.json(hostResorts);
 }))
 
+//TO EDIT A EXISTING RESORT - PUT REQUEST to '/api/resorts/edit
 router.put('/edit', asyncHandler(async (req, res, next) => {
     console.log('edit route')
     const {resortId, name, price, capacity, details, city, state, latitude, longitude, imageUrl, id} = req.body;
@@ -133,6 +135,23 @@ router.put('/edit', asyncHandler(async (req, res, next) => {
         }
     })
     return res.json(hostResorts)
+}))
+
+//TO DELETE A RESORT - DELETE REQUEST to '/api/resorts/delete
+router.delete('/delete', asyncHandler(async (req, res, next) => {
+    const {resortId, userId} = req.body;
+    const resort = await Resort.findByPk(resortId)
+
+    if(resort && userId === resort.host_id){
+        await resort.destroy();
+        const hostResorts = await db.Resort.findAll({
+            where: {
+                host_id: userId
+            }
+        })
+        return res.json(hostResorts);
+    }
+    return res.error('Error - Couldnt Find Resort');
 }))
 
 module.exports = router
