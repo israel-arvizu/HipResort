@@ -1,6 +1,6 @@
 import {useState } from "react";
 import { useDispatch } from "react-redux"
-import { Redirect, useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 import {addReservation} from '../../store/reservations';
 
 
@@ -23,7 +23,7 @@ function BookingButton({resort, id}) {
           const data = await res.json();
           if (data) setErrors(data.errors);
       });
-      history.push('/');
+      history.push('/user');
     }
 
     return setErrors(['Check-Out Date must be after Check-In Date']);
