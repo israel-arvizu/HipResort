@@ -27,34 +27,69 @@ function LoginFormPage() {
 
     }
 
+    const logInDemo = (e) => {
+        e.preventDefault();
+        let credential = "demo@user.io";
+        let password = "password"
+        return dispatch(sessionActions.loginDemo({credential, password}))
+    }
+
     return (
-        <form onSubmit={handleSubmit}>
-            <Helmet>
-            <title>Login</title>
-            </Helmet>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <label className='loginLabel'>
-                Username or Email
-                <input
-                    type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                    required
-                />
-            </label>
-            <label className='loginLabel'>
-                Password
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Log In</button>
-        </form>
+        <div className='form-container-signin'>
+            <div className='form-container-content-holder'>
+                <form onSubmit={handleSubmit}>
+                        <Helmet>
+                        <title>Login</title>
+                        </Helmet>
+                        <ul>
+                            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
+                        <div className='top-head-form-holder'>
+                            <div className='top-head-form-main-title'>
+                                <span className='top-form-title'>Welcome to </span>
+                                <span className='top-form-logo-title'> HipResort</span>
+                            </div>
+                            <p>Please login below</p>
+                        </div>
+                        <div className='form-container-content'>
+                            <div className='form-container-middle-input-content'>
+                                <div className='login-label-cont'>
+                                    <label className='loginLabel'> Email: </label>
+                                    <div class='input-login-div'>
+                                        <i class="fa-solid fa-envelope fa-lg"></i>
+                                        <input
+                                                className='login-table-input Btn'
+                                                type="text"
+                                                value={credential}
+                                                onChange={(e) => setCredential(e.target.value)}
+                                                required
+                                            />
+                                    </div>
+                                </div>
+                                <div className='login-label-cont'>
+                                    <label className='loginLabel'> Password: </label>
+                                    <div class='input-login-div'>
+                                        <i class="fa-solid fa-key fa-lg"></i>
+                                        <input
+                                                className='login-table-input Btn'
+                                                type="password"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
+                                                required
+                                            />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='form-container-button-section'>
+                                <div className='form-container-buttons'>
+                                    <button className="form-log-in-button" type="submit">Log In</button>
+                                    <button className="form-log-in-button" onClick={logInDemo}>Demo User</button>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     )
 }
 
