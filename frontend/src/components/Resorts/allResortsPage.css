@@ -1,0 +1,99 @@
+
+.resorts-main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.resorts-container-body{
+    display: flex;
+    flex-direction: row;
+
+    flex-wrap: wrap;
+}
+
+.resort-info-container{
+    max-height: 300px;
+    max-width: 252px;
+    margin: 4%;
+    list-style: none;
+}
+
+.resort-info-container:hover{
+    position: relative;
+    bottom: 1%;
+}
+
+.resort-list-image{
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.resorts-container-sec{
+    max-height: 300px;
+    max-width: 252px;
+}
+
+.resorts-image-container{
+    width: 250px;
+    height: 168px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px transparent;
+    border-radius: 15px;
+    margin-bottom: 2%;
+
+}
+
+.resort-image-interactive{
+    text-decoration: none;
+    color: blue
+}
+
+.resorts-details-containers{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100px;
+}
+
+.resort-details-info-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.resort-details-name{
+    color: black;
+    font-weight: 500;
+    padding-right: 2px;
+}
+
+.resort-details-break{
+    text-decoration: none;
+    color: black;
+}
+
+.resorts-details-price-tag{
+    margin-bottom: 0px;
+    margin-top: 1px;
+    color: black;
+    font-weight: 500;
+}
+.resort-details-info-text{
+    font-weight: 200;
+    color: rgb(94, 93, 93);
+}
+
+.resorts-details-price-tag-text{
+    color: black;
+    font-size: small;
+}

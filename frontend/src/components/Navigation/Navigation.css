@@ -15,8 +15,14 @@
     height: 30px;
 }
 
+.right-side-head{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-left: 20%;
+}
+
 #nav-logo{
-    margin-left: 20rem;
     font-size: 25px;
     font-weight: 600;
 }
