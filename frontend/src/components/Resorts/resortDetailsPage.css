@@ -1,4 +1,9 @@
 
+.details-main-container-outer{
+    display: flex;
+    flex-direction: row;
+
+}
 .main-body-image-container{
     display: flex;
     justify-content: center;
@@ -23,6 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 750px;
 }
 
 #content-main-title{
@@ -38,10 +44,121 @@
 }
 
 #content-main-resort-details{
+    margin-top: 1%;
     width: 80%;
     margin-left: 1%;
+    font-weight: 300;
 }
 
 #content-main-resort-host{
-    width: 20%;
+    width: 150px;
+    padding-right: 5%;
+}
+
+.content-main-location{
+    color: rgb(105, 103, 103);
+}
+
+#content-main-resort-details-head{
+    margin-bottom: 2px;
+    margin-left: 1%;
+    color: rgb(48, 48, 49);
+    font-weight: 600;
+}
+
+.host-details-image{
+    max-width: 60%
+}
+
+#content-main-resort-name-head{
+    font-size: 15px;
+    margin-bottom: 1px;
+    color: rgb(135, 137, 138);
+}
+
+#content-main-resort-name{
+    margin-top: 1px;
+}
+
+#line-break-details{
+    width: 750px;
+}
+
+.bottom-amenities-section-container{
+    width: 750px;
+}
+
+#amenities-image{
+    width: 45px;
+    margin-right: 4px;
+}
+
+.amenities-details-container{
+    max-width: fit-content;
+    list-style: none;
+}
+
+.bottom-amenities-section-body{
+    text-decoration: none;
+    width: 80%;
+}
+
+.amenities-details-list-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bottom-amenities-section-ul{
+    padding-left: 0px;
+}
+
+.content-container-right{
+    border: 1px solid rgb(192, 190, 190);;
+    margin-top: 5%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 250px;
+    height: fit-content;
+}
+
+.content-container-price-section{
+    width: 250px;
+    border-bottom: 1px solid rgb(192, 190, 190);
+}
+
+.booking-container{
+    border-bottom: 1px solid rgb(192, 190, 190);
+    width: 250px;
+}
+
+.booking-container-capacity{
+    border-bottom: 1px solid rgb(192, 190, 190);
+    width: 250px;
+}
+
+#booking-container-price{
+    margin-bottom: 1px;
+    margin-left: 5px;
+}
+
+#booking-container-cap{
+    margin-top: 1px;
+    margin-left: 5px;
+}
+
+#booking-container-capacity-header{
+    margin-left: 5px;
+    margin-bottom: 5px;
+
+}
+
+#booking-container-capacity-bottom{
+    margin-left: 5px;
+    margin-bottom: 5px;
+    font-weight: 300;
+    margin-top: 1px;
 }
