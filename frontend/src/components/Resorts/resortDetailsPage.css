@@ -1,0 +1,47 @@
+
+.main-body-image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 750px;
+    height: 500px;
+}
+
+.main-body-image{
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: fill;
+}
+
+.left-section-outer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-container-main{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#content-main-title{
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+#content-main-details-container{
+    display: flex;
+    flex-direction: row;
+    max-width: 660px;
+}
+
+#content-main-resort-details{
+    width: 80%;
+    margin-left: 1%;
+}
+
+#content-main-resort-host{
+    width: 20%;
+}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory} from 'react-router-dom';
 import * as resortActions from '../../store/resort';
 import BookingButton from './BookingButton';
+import './resortDetailsPage.css'
 
 
 function ResortDetails() {
@@ -46,14 +47,21 @@ function ResortDetails() {
 
     return(
         <div className='details-main-container'>
-            <div className='image-container-main'>
-                <div className='Right-section-outer'>
-                    <div className='content-container-left'>
-                        <img src={resort.imageUrl} alt='Resort Image'></img>
-                        <h2> {resort.name} </h2>
-                        <span> {resort.city}, {resort.state} </span>
-                        <span> HOST: {host.username} </span>
-                        <p> {resort.details}</p>
+            <div className='body-container-main'>
+                <div className='left-section-outer'>
+                    <div className='main-body-image-container'>
+                        <img className='main-body-image' src={resort.imageUrl} alt='Resort Image'></img>
+                    </div>
+                    <div className='content-container-main'>
+                        <div>
+                            <h2 id="content-main-title"> {resort.name} </h2>
+                            <span> {resort.city}, {resort.state} </span>
+                            <hr></hr>
+                        </div>
+                        <div id="content-main-details-container">
+                            <p id='content-main-resort-host'> HOST: {host.username} </p>
+                            <p id='content-main-resort-details'> {resort.details}</p>
+                        </div>
                     </div>
                     <div className='bottom-amenities-section'>
                         <ul>
@@ -61,14 +69,14 @@ function ResortDetails() {
                                 return (
                                     <li key={amenitie.id}>
                                         {amenitie.name}
-                                        {/* <img src={amenitie.name} alt="Amenitie picture"/> */}
+                                        <img src={amenitie.pictureUrl} alt="Amenitie picture"/>
                                     </li>
                                 )
                             })}
                         </ul>
                     </div>
                 </div>
-                <div className='content-container=right'>
+                <div className='content-container-right'>
                     <h3> ${resort.price} </h3>
                     <span>Capacity: {resort.capacity} </span>
                     <div className='booking-container'>
