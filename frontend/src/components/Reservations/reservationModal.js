@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteReservation } from '../../store/reservations';
-// import './reservationModal.css'
+import './reservationModal.css'
 
 function ReservationModal({setShowModal, resort, reservation, inDate, outDate, userId}) {
     const dispatch = useDispatch();
@@ -16,20 +16,34 @@ function ReservationModal({setShowModal, resort, reservation, inDate, outDate, u
     return(
         <div className='modalBackground'>
             <div className='modalContainer'>
-                <button onClick={() => {setShowModal(false)}}> X </button>
-                <div className='title'>
-                    Your Reservation at
-                    <h2>{resort.name} </h2>
-                </div>
-                <div className='details-body'>
-                    <img src={resort.imageUrl}/>
-                    <span>Check-In: {inDate}</span>
-                    <span>Check-Out: {outDate}</span>
-                    <span>Confimation Number: {reservation.confirmationNumber}</span>
-                </div>
-                <div className='details-bottom'>
-                    Reservation
-                    <button onClick={deleteReservationFunc}>Cancel Reservation</button>
+                <div className='modal-container-outside-box'>
+                    <div className='modal-container-details'>
+                        <div className='modal-title-reservation'>
+                            <p className='moda-title-head'>Your Reservation at</p>
+                            <h2 className='moda-title-head-name'>{resort.name} </h2>
+                        </div>
+                        <div className='details-body-section'>
+                            <div className='details-body-content-container'>
+                                <p className='label-details-body'>Check-In:</p>
+                                <p className='label-details-content'> {inDate} </p>
+                            </div>
+                            <div className='details-body-content-container'>
+                                <p className='label-details-body'>Check-Out:</p>
+                                <p className='label-details-content'> {outDate} </p>
+                            </div>
+                            <div className='details-body-content-container'>
+                                <p className='label-details-body'>Confimation Number:</p>
+                                <p className='label-details-content'> {reservation.confirmationNumber} </p>
+                            </div>
+                        </div>
+                        <div className='modal-details-bottom'>
+                            <button className='modal-bottom-resev-btn' onClick={() => {setShowModal(false)}}> Go Back </button>
+                            <button className='modal-bottom-resev-btn' onClick={deleteReservationFunc}>Cancel Reservation</button>
+                        </div>
+                    </div>
+                    <div className='modal-container-image'>
+                    <img className='modal-container-image-content' src={resort.imageUrl}/>
+                    </div>
                 </div>
             </div>
         </div>
