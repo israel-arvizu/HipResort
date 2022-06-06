@@ -28,7 +28,7 @@ function ProfilePage(){
             <div className="left-container-profileBody">
                 <div className="profile-user-details">
                     <div className="profile-user-head-details">
-                        <img src="/Profile-picture.png" className="profile-picture"/>
+                        <img src="/newuserimage.png" className="profile-picture"/>
                         <p id="name-profile">{sessionUser.name}</p>
                     </div>
                     <div className="profile-user-head-small-details">
@@ -44,9 +44,6 @@ function ProfilePage(){
                     <div className="profile-user-bio-details">
                         <p id="short-profile-bio">Bio:</p>
                         <p id="short-profile-bio-text"> {sessionUser.bio} </p>
-                    </div>
-                    <div>
-                        <button id="edit-profile-btn">Edit Profile</button>
                     </div>
                 </div>
                 <div className="profile-user-second-square">

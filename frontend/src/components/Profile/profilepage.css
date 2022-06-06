@@ -1,5 +1,5 @@
 .profile-picture{
-    width: 8rem;
+    width: 85px;
     border: 1px rgb(2, 2, 2) solid;
     border-radius: 80%;
 }
@@ -28,7 +28,8 @@
     flex-direction: column;
     margin: 10px;
     margin-top: 20%;
-    max-width: 70%;
+    width: 70%;
+    min-width: 247px;
 }
 
 .profile-user-head-details{
@@ -37,6 +38,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin: 5%;
+    width: 240px;
 }
 
 .profile-user-head-small-details{
@@ -60,7 +62,7 @@
 }
 
 #name-profile{
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -75,7 +77,7 @@
     color: #807e7e;
 }
 #short-profile-bio-text{
-    margin: 1px 1px 1px 27px;
+    margin: 1px 1px 15px 27px;
     font-weight: 400;
 }
 
@@ -100,6 +102,7 @@
     margin: 10px;
     margin-top: 10%;
     max-width: 70%;
+    min-width: 247px;
 }
 
 .profile-user-second-square-content{

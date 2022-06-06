@@ -121,6 +121,13 @@
     color: #5369c4;
 }
 
+.button-explore-main:hover{
+    cursor: pointer;
+}
 .resort-image-interactive{
     margin: 1%;
+}
+
+.content-container-explore-pages{
+    text-decoration: none;
 }
