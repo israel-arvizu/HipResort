@@ -30,7 +30,10 @@ function Navigation({ isLoaded }){
   return (
     <div className='navigation-container'>
         <div className='right-side-head'>
-          <p id='nav-logo'>HipResort</p>
+          <div className='right-side-logo'>
+            <p id='nav-logo'>HipResort</p>
+            <img id='nav-logo-image' src='/HipResortLogoNew.png'></img>
+          </div>
         </div>
         <div className='left-side-head'>
           <div className='nav-links-cont'>
