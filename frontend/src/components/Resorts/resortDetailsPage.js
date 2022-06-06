@@ -36,8 +36,8 @@ function ResortDetails() {
     } else {
         sessionLinks = (
         <>
-            <div className='left-side-head'>
-                <button onClick={routeRedirect}>
+            <div className="booking-date-button-container guest">
+                <button className='calendar-submit-button guest' onClick={routeRedirect}>
                     Book
                 </button>
             </div>

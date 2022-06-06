@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux"
 import {useHistory } from "react-router-dom";
 import {addReservation} from '../../store/reservations';
 
-
 function BookingButton({resort, id}) {
   const dispatch = useDispatch();
   const resortId = resort.id;

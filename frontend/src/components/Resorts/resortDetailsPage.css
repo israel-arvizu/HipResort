@@ -213,3 +213,20 @@
     justify-content: center;
     align-items: center;
 }
+
+.booking-date-button-container.guest{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.calendar-submit-button.guest{
+    margin-top: 5px;
+}
+
+.calendar-submit-button.guest:hover{
+    cursor: pointer;
+}
+
+.calendar-submit-button:hover{
+    cursor: pointer;
+}
