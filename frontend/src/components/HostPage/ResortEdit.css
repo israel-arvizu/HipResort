@@ -1,0 +1,83 @@
+.form-container-content-holder-host{
+    border: 1px solid black;
+    background-color: #F5EDD7;
+    width: 600px;
+    height: 600px;
+}
+
+.form-container-content-holder-add{
+    border: 1px solid black;
+    background-color: #F5EDD7;
+    width: 500px;
+    height: 620px;
+}
+
+.title-editResort-page{
+    margin-bottom: 0px;
+    margin-left: 17px;
+}
+
+.form-container-buttons-host{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.form-log-in-button-host{
+    width: 100px;
+    height: 50px;
+    max-width: 100px;
+    margin: 15px;
+    border: 1px solid black;
+    background-color: #f1ece2;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.form-log-in-button-host:hover{
+    position: relative;
+    bottom: 5px;
+    box-shadow: 1px 2px 3px gray;
+    cursor: pointer;
+}
+
+.form-container-button-section-host{
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form-container-middle-input-content-host{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    margin-left: 1px;
+    margin-top: 5px;
+    width: 400px;
+}
+
+.add-table-input.Btn{
+    border: none;
+    background-color: transparent;
+    margin-left: 2%;
+    border-bottom: 1px solid rgb(141, 139, 139);
+}
+
+.add-table-input.Btn.seperate{
+    margin-bottom: 10px;
+}
+
+.login-label-cont.add{
+    margin-bottom: 5px;
+}
+
+.add-resort-label{
+ margin-top: 10px;
+ margin-bottom: 5px;
+ color: #858585;
+ font-size: small;
+}

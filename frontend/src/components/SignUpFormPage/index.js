@@ -50,7 +50,7 @@ function SignUpFormPage() {
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
-          <div className='top-head-form-holder'>
+            <div className='top-head-form-holder'>
               <div className='top-head-form-main-title'>
                   <span className='top-form-title'>Welcome to </span>
                   <span className='top-form-logo-title'> HipResort</span>
