@@ -16,6 +16,9 @@
     min-width: 100%;
     min-height: 100%;
     object-fit: fill;
+    border: 5px transparent rgb(88, 87, 87);
+    border-radius: 15px;
+    box-shadow: -5px 5px 3px 1px rgb(199, 198, 198);
 }
 
 .left-section-outer{
@@ -123,6 +126,7 @@
     align-items: flex-start;
     width: 250px;
     height: fit-content;
+    box-shadow: -2px 1px 4px 1px rgb(175, 174, 174);
 }
 
 .content-container-price-section{
@@ -161,4 +165,51 @@
     margin-bottom: 5px;
     font-weight: 300;
     margin-top: 1px;
+}
+
+.resort-booking-date-container {
+    list-style-type: none;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: fit-content;
+    margin-bottom: 5px;
+  }
+
+.resort-booking-date-widget{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(192, 190, 190);
+    margin-bottom: 10px;
+}
+
+.calendar-input-widget-title{
+    margin-left: 5px;
+}
+
+.calendar-input-widget{
+    border: none;
+    background-color: #F3F2EF;
+    margin-bottom: 16px;
+    margin-left: 5px;
+}
+
+.booking-date-widget-break{
+    width: fit-content;
+    margin: 5px;
+}
+
+.calendar-submit-button{
+    background-color: #40D9AC;
+    color: whitesmoke;
+    border: none;
+    width: 230px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.booking-date-button-container{
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

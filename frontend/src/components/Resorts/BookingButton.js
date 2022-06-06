@@ -30,26 +30,37 @@ function BookingButton({resort, id}) {
   };
 
   return (
-        <ul className="profile-dropdown">
+        <ul className="resort-booking-date-container">
           <form onSubmit={bookResort}>
             <ul>
               {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-            <li>Check-In Date</li>
-              <input
-              type='date'
-              value={checkInDate}
-              onChange={(e) => setCheckInDate(e.target.value)}
-              required
-              />
-            <li>Check out Date</li>
-            <input
-              type='date'
-              value={checkOutDate}
-              onChange={(e) => setCheckOutDate(e.target.value)}
-              required
-              />
-            <button type="submit">Book today!</button>
+            <div className="resort-booking-date-widget">
+              <div>
+                <li className="calendar-input-widget-title">Check-In Date</li>
+                  <input
+                  className="calendar-input-widget"
+                  type='date'
+                  value={checkInDate}
+                  onChange={(e) => setCheckInDate(e.target.value)}
+                  required
+                  />
+              </div>
+              <hr className="booking-date-widget-break"></hr>
+              <div>
+                <li className="calendar-input-widget-title">Check out Date</li>
+                <input
+                  className="calendar-input-widget"
+                  type='date'
+                  value={checkOutDate}
+                  onChange={(e) => setCheckOutDate(e.target.value)}
+                  required
+                  />
+              </div>
+            </div>
+            <div className="booking-date-button-container">
+              <button className="calendar-submit-button" type="submit">Book today!</button>
+            </div>
           </form>
         </ul>
       )
