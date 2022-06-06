@@ -12,7 +12,12 @@
 .resorts-container-body{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+}
 
+.resorts-container-body-host{
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 
@@ -20,6 +25,13 @@
     max-height: 300px;
     max-width: 252px;
     margin: 4%;
+    list-style: none;
+}
+
+.resort-info-host-container{
+    max-height: 300px;
+    max-width: 252px;
+    margin: 10px;
     list-style: none;
 }
 
@@ -96,4 +108,44 @@
 .resorts-details-price-tag-text{
     color: black;
     font-size: small;
+}
+
+.editResort-btn{
+    height: 50%;
+    width: 250px;
+    margin: 2px;
+    border: 1px rgb(216, 188, 151) solid;
+    border-radius: 10px;
+    background-color: #ece2c7;
+    font-weight: 600;
+    color: rgb(107, 103, 103)
+}
+
+.editResort-btn:hover{
+    cursor: pointer;
+    background-color: #f5f0e4;
+}
+
+.host-resort-page-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.addResort-btn{
+    width: 250px;
+    margin: 15px;
+    border: 1px rgb(216, 188, 151) solid;
+    border-radius: 10px;
+    background-color: #ece2c7;
+    font-weight: 600;
+    color: rgb(107, 103, 103)
+}
+
+.addResort-btn:hover{
+    cursor: pointer;
+    background-color: #f5f0e4;
+}
+
+.addResort-heading{
+    margin-left: 3%;
 }

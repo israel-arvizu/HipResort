@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import * as resortActions from '../../store/resort';
 import { Modal } from '../../context/Modal';
 import ResortAddModal from './ResortAddModal';
+import '../Resorts/allResortsPage.css'
 
 function HostPage() {
     const sessionUser = useSelector(state => state.session.user);
@@ -24,43 +25,65 @@ function HostPage() {
     if(!allResorts) return null;
 
     return (
-        <div className="main-host-container">
-            <div className="host-right-container">
-                <div className="create-resort-container">
-                    <h2>Add Another Resort</h2>
-                    <button className="addResort Btn" onClick={() => setShowModal(true)}>Add Resort</button>
+        <div className='main-host-container'>
+            <div className='host-right-container'>
+                <div className='create-resort-container'>
+                    <hr></hr>
+                        <div className='host-resort-page-header'>
+                            <h2 className='addResort-heading'>Add Another Resort</h2>
+                            <button className='addResort-btn' onClick={() => setShowModal(true)}>Add Resort</button>
+                        </div>
+                    <hr></hr>
                   {showModal &&  (
                   <Modal onClose={() => {setShowModal(false)}}>
                         <ResortAddModal userId={sessionUser.id} setShowModal={setShowModal}/>
                     </Modal>
                     )}
                 </div>
-                <div className="delete-resort-container">
-                    <h2>Property out of service?</h2>
-                    <a>Delete Resorts here!</a>
-                </div>
             </div>
             <div className="host-left-container">
                 <div className="host-resorts-list">
-                    <h2>Your Resorts</h2>
-                    <ul>
-                        {allResorts.map((resort) => {
-                            return(
-                                    <li key={resort.id}>
-                                        <div className='resorts-container-sec'>
-                                            <img src={resort.imageUrl} alt="Resort Image"></img>
-                                            <span>{resort.name}</span>
-                                            <ul>
-                                                <li>{resort.price} per night</li>
-                                                <li>Capacity: {resort.capacity}</li>
-                                                <li>{resort.city}, {resort.state}</li>
-                                                <button className="editResort Btn" onClick={() => resortDetails(resort.id)}>Resort Detials</button>
-                                            </ul>
+                    <h2 className='addResort-heading'>Your Resorts</h2>
+                    <div className='resorts-container-holder'>
+                        <ul>
+                            <div className='resorts-container-body-host'>
+                                {allResorts.map((resort) => {
+                                    return(
+                                        <div className='resort-info-host-container'>
+                                            <li key={resort.id}>
+                                                <div className='resorts-container-sec'>
+                                                    <div className='resorts-image-container'>
+                                                        <img className='resort-list-image' src={resort.imageUrl} alt="Resort"></img>
+                                                    </div>
+                                                    <div className='resorts-details-containers'>
+                                                        <div>
+                                                            <span className='resort-details-name'>{resort.name}</span>
+                                                            <span><i class="fa-solid fa-circle-check fa-sm"></i></span>
+                                                        </div>
+                                                        <div className='resort-details-info-container'>
+                                                            <div className='resort-details-info-text'>
+                                                                <span>{resort.capacity} people </span>
+                                                                <span> - </span>
+                                                                <span>{resort.city}</span>
+                                                                <span> - </span>
+                                                                <span>{resort.state}</span>
+                                                            </div>
+                                                            <div>
+                                                                <span className='resorts-details-price-tag'>${resort.price}</span>
+                                                                <span className='resorts-details-price-tag-text'>/night</span>
+                                                            </div>
+                                                            <button className="editResort-btn" onClick={() => resortDetails(resort.id)}>Resort Detials</button>
+                                                        </div>
+                                                    </div>
+                                                    <hr className='resort-details-break'></hr>
+                                                </div>
+                                            </li>
                                         </div>
-                                    </li>
-                            )
-                        })}
-                    </ul>
+                                    )
+                                })}
+                            </div>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
