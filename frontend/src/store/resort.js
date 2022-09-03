@@ -56,6 +56,22 @@ export const getResort = (id) => async (dispatch) => {
     return response
 };
 
+export const searchResults = (keyWord, guests) => async (dispatch) => {
+    console.log(keyWord, "BACKEND")
+    console.log(guests)
+    const response = await csrfFetch('api/resorts/results', {
+        method: 'PUT',
+        body: JSON.stringify({
+            keyWord,
+            guests
+        })
+    })
+
+    const data = await response.json();
+    dispatch(setResorts(data));
+    return response;
+}
+
 export const createResort = (resort) => async (dispatch) => {
     const {resortName, resortPrice, resortCapacity,
         resortDetails, resortCity, resortState, resortLatitude, resortLongitude,
