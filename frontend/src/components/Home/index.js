@@ -1,11 +1,22 @@
+import React, {useState} from "react";
 import { Helmet } from "react-helmet";
-import { Redirect } from "react-router-dom";
 import './homePage.css'
 
-function splashPage() {
+function SplashPage() {
+    const [searchWord, setSearchWord] = useState("")
+    const [amountOfGuest, setAmountOfGuest] = useState(1)
 
-    function RedirectToResorts() {
-        <Redirect to="/resorts" />
+    const searchContent = async (e) => {
+        e.preventDefault()
+        if(searchWord === ""){
+            window.location.href = `/results/all/${amountOfGuest}`;
+        }else{
+            window.location.href = `/results/${searchWord}/${amountOfGuest}`;
+        }
+    }
+
+    const guestChange = (e) =>{
+        setAmountOfGuest(e.target.value)
     }
 
     return (
@@ -16,7 +27,35 @@ function splashPage() {
             <div className="body-home-container">
                 <div className="top-banner-header">
                     <p className="homeheader-mainHead">Find Yourself in Luxury</p>
-                    <p className="homeheader-subheading">Discover and book Resorts all over the world, experience the life of comfort and wilderness</p>
+                    <p className="homeheader-subheading">Discover and book Resorts all over the world</p>
+                    <p className="homeheader-subheading bottom">experience the life of comfort and wilderness in exotic lands</p>
+                </div>
+                <div className="home-search-body-container">
+                    <form onSubmit={(e) => searchContent(e)} className="home-search-body-form-content">
+                        <div className="search-input-container">
+                            <label name="LocationSearch">Where to?</label>
+                            <input
+                            type="text"
+                            className="input-container locations"
+                            placeholder="Try California, Costa Rica, Miami"
+                            onChange={(e) => setSearchWord(e.target.value)}
+                            />
+                        </div>
+                        <div className="search-input-container guest">
+                            <label>Guests</label>
+                            <select
+                            className="input-container locations guests-select"
+                            onChange={(e) => guestChange(e)}
+                            >
+                                <option value="1">1 guest</option>
+                                <option value="2">2 guest</option>
+                                <option value="3">3 guest</option>
+                                <option value="4">4 guest</option>
+                                <option value="5+">5+ guest</option>
+                            </select>
+                        </div>
+                        <button type="submit" className="search-form-submit-btn"><i class="fa-solid fa-magnifying-glass fa-xl" style={{color: "white"}}></i></button>
+                    </form>
                 </div>
                 <div className="main-picture-home">
                     <img className="main-picture" src="/HomePageImage.jpg"/>
@@ -56,4 +95,4 @@ function splashPage() {
     )
 }
 
-export default splashPage;
+export default SplashPage;
