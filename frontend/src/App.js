@@ -12,6 +12,9 @@ import Navigation from './components/Navigation';
 import ProfilePage from './components/Profile';
 import HostPage from './components/HostPage';
 import ResortEdit from './components/HostPage/ResortEditModa';
+import ResultsPage from './components/Results';
+import TestPage from './components/Results/testPage';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +54,12 @@ function App() {
           </Route>
           <Route path='/user/resort' exact>
             <HostPage />
+          </Route>
+          <Route path='/results' exact={true}>
+            <ResultsPage />
+          </Route>
+          <Route path='/test/page' exact={true}>
+            <TestPage />
           </Route>
         </Switch>
       )}

@@ -57,10 +57,8 @@ export const getResort = (id) => async (dispatch) => {
 };
 
 export const searchResults = (keyWord, guests) => async (dispatch) => {
-    console.log(keyWord, "BACKEND")
-    console.log(guests)
     const response = await csrfFetch('api/resorts/results', {
-        method: 'PUT',
+        method: 'POST',
         body: JSON.stringify({
             keyWord,
             guests
