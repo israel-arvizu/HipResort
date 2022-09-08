@@ -20,7 +20,7 @@ function ResortsPage(){
             <h2> All Resorts </h2>
             <hr></hr>
             <div className='resorts-container-holder'>
-                <ul>
+                <ul className='resorts-conatiner-list-container'>
                     <div className='resorts-container-body'>
                     {allResorts.resorts.map((resort) => {
                         return(
