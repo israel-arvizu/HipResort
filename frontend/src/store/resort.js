@@ -57,8 +57,8 @@ export const getResort = (id) => async (dispatch) => {
 };
 
 export const searchResults = (keyWord, guests) => async (dispatch) => {
-    const response = await csrfFetch('api/resorts/results', {
-        method: 'POST',
+    const response = await csrfFetch('/api/resorts/results', {
+        method: 'PUT',
         body: JSON.stringify({
             keyWord,
             guests

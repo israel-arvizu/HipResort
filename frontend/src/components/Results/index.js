@@ -1,18 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from 'react-redux';
+import {useParams} from 'react-router-dom'
+import { searchResults } from "../../store/resort";
 import '../Resorts/allResortsPage.css'
 
 export default function ResultsPage(){
     const dispatch = useDispatch();
+    const keyWord = useParams().search;
+    const guestNum = useParams().guests;
+    const allResorts = useSelector(state => state.resort);
 
-    const allResorts = useSelector(state => state.resort)
-    if(!allResorts.resorts){
+    useEffect(() => {
+        (async () => {
+            await dispatch(searchResults(keyWord, guestNum))
+        })()
+    }, [dispatch])
+
+    if(!allResorts.resorts || allResorts.resorts.length <= 0){
         return(
             <div className="resorts-main-container">
-                <Helmet>
-                <title>Results</title>
-                </Helmet>
                 <div>
                 <hr></hr>
                 <h2> Search Results </h2>
@@ -25,9 +32,6 @@ export default function ResultsPage(){
 
     return(allResorts.resorts &&
         <div className="resorts-main-container">
-            <Helmet>
-            <title>Results</title>
-            </Helmet>
             <div>
             <hr></hr>
             <h2> Search Results </h2>

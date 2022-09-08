@@ -1,20 +1,18 @@
 import React, {useState} from "react";
 import { Helmet } from "react-helmet";
-import { useDispatch } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
-import { searchResults } from "../../store/resort";
 import './homePage.css'
 
 function SplashPage() {
-    const dispatch = useDispatch()
-    const history = useHistory()
-    const [searchWord, setSearchWord] = useState(null)
-    const [amountOfGuest, setAmountOfGuest] = useState(0)
+    const [searchWord, setSearchWord] = useState("")
+    const [amountOfGuest, setAmountOfGuest] = useState(1)
 
     const searchContent = async (e) => {
         e.preventDefault()
-        await dispatch(searchResults(searchWord, amountOfGuest))
-        history.push('/results')
+        if(searchWord === ""){
+            window.location.href = `/results/all/${amountOfGuest}`;
+        }else{
+            window.location.href = `/results/${searchWord}/${amountOfGuest}`;
+        }
     }
 
     const guestChange = (e) =>{

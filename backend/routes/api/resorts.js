@@ -155,30 +155,43 @@ router.delete('/delete', asyncHandler(async (req, res, next) => {
 
 //To get search results
 
-router.post('/results', asyncHandler(async (req, res, next) => {
-    const {keyWord, guests} = req.body;
-    console.log("This is the Keyword", keyWord, "and the guests are", guests)
+router.put('/results', asyncHandler(async (req, res, next) => {
+    let {keyWord, guests} = req.body;
+    let resorts = {}
+    guests = parseInt(guests)
+    if(guests === NaN || guests < 0){
+        guests = 1
+    }
 
-    const resorts = await db.Resort.findAll({
-        where: {
-            [Op.or]:{
-                name: {
-                    [Op.like]: `%${keyWord}%`
-                },
-                city: {
-                    [Op.like]: `%${keyWord}%`
-                },
-                state: {
-                    [Op.like]: `%${keyWord}%`
+    if(keyWord === "all"){
+        resorts = await db.Resort.findAll({
+            where: {
+                capacity:{
+                    [Op.gte]: guests
                 }
-            },
-            capacity:{
-                [Op.gte]: guests
             }
-        }
-    })
+        })
+    }else{
+        resorts = await db.Resort.findAll({
+            where: {
+                [Op.or]:{
+                    name: {
+                        [Op.like]: `%${keyWord}%`
+                    },
+                    city: {
+                        [Op.like]: `%${keyWord}%`
+                    },
+                    state: {
+                        [Op.like]: `%${keyWord}%`
+                    }
+                },
+                capacity:{
+                    [Op.gte]: guests
+                }
+            }
+        })
+    }
 
-    console.log('RETURNING THE', resorts)
     return res.json(resorts)
 }))
 
