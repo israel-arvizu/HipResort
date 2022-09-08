@@ -176,13 +176,13 @@ router.put('/results', asyncHandler(async (req, res, next) => {
             where: {
                 [Op.or]:{
                     name: {
-                        [Op.like]: `%${keyWord}%`
+                        [Op.iLike]: `%${keyWord}%`
                     },
                     city: {
-                        [Op.like]: `%${keyWord}%`
+                        [Op.iLike]: `%${keyWord}%`
                     },
                     state: {
-                        [Op.like]: `%${keyWord}%`
+                        [Op.iLike]: `%${keyWord}%`
                     }
                 },
                 capacity:{

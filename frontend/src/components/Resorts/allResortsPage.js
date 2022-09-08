@@ -26,7 +26,7 @@ function ResortsPage(){
                         return(
                             <a className='resort-image-interactive' href={`/resort/${resort.id}`}>
                                 <div className='resort-info-container'>
-                                    <li key={resort.id}>
+                                    <li key={resort.id} className='resort-container-list-outline'>
                                         <div className='resorts-container-sec'>
                                             <div className='resorts-image-container'>
                                                 <img className='resort-list-image' src={resort.imageUrl} alt="Resort"></img>
@@ -44,7 +44,7 @@ function ResortsPage(){
                                                         <span> - </span>
                                                         <span>{resort.state}</span>
                                                     </div>
-                                                    <div>
+                                                    <div className='resort-details-price-cont'>
                                                         <span className='resorts-details-price-tag'>${resort.price}</span>
                                                         <span className='resorts-details-price-tag-text'>/night</span>
                                                     </div>

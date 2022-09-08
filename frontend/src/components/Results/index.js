@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from 'react-router-dom'
 import { searchResults } from "../../store/resort";
+import PropagateLoader from "react-spinners/PropagateLoader";
 import '../Resorts/allResortsPage.css'
 import './resultsPage.css'
 
@@ -18,12 +19,34 @@ export default function ResultsPage(){
         })()
     }, [dispatch])
 
-    if(!allResorts.resorts || allResorts.resorts.length <= 0){
+    if(!allResorts.resorts){
         return(
             <div className="resorts-main-container">
-                <div>
+                <div className='resorts-main-content-outline'>
+                <hr className='line-break-main-header'></hr>
+                    <div className='top-header-resorts-text'>
+                        <h2> Results</h2>
+                    </div>
                 <hr></hr>
-                <h2> Search Results </h2>
+                </div>
+                <div className="resorts-loading-results-container" >
+                    <p className='resorts-loading-subheading'>One Second...</p>
+                    <PropagateLoader color="#ecdba8" />
+                </div>
+            </div>
+        )
+    }
+
+    if(allResorts.resorts.length <= 0){
+        return(
+            <div className="resorts-main-container">
+                <div className='resorts-main-content-outline'>
+                <hr className='line-break-main-header'></hr>
+                    <div className='top-header-resorts-text'>
+                        <h2> Search Results -</h2>
+                        <span className='main-header-sub-body'>{allResorts.resorts.length} results matching</span>
+                        <span className='main-header-sub-keyword'>{keyWord}</span>
+                    </div>
                 <hr></hr>
                 <p>Nothing Found...</p>
                 </div>
