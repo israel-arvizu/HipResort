@@ -49,31 +49,36 @@ function ResortDetails() {
         <div className='details-main-container'>
             <div className='body-container-main'>
                 <div className='left-section-outer'>
+                    <div className='main-details-title-container'>
+                        <div className='outer-navigation-link'>
+                            <a href={`/results/${resort.state}/1`} id='nav-links-location'>{resort.state}</a>
+                            <span id='nav-links-location'> {'>'} </span>
+                            <a href={`/results/${resort.city}/1`} id='nav-links-location'>{resort.city}</a>
+                        </div>
+                        <h2 id="content-main-title"> {resort.name} </h2>
+                        <span className='content-main-location'> {resort.city}, {resort.state} </span>
+                        <hr id='line-break-details'></hr>
+                    </div>
                     <div className='main-body-image-container'>
                         <img className='main-body-image' src={resort.imageUrl} alt='Resort Image'></img>
                     </div>
                     <div className='details-main-container-outer'>
-                        <div>
+                        <div className='content-container-left'>
                             <div className='content-container-main'>
-                                <div>
-                                    <h2 id="content-main-title"> {resort.name} </h2>
-                                    <span className='content-main-location'> {resort.city}, {resort.state} </span>
-                                    <hr id='line-break-details'></hr>
-                                </div>
                                 <div id="content-main-details-container">
                                     <div id='content-main-resort-host'>
                                         <img className="host-details-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png" />
                                         <p id='content-main-resort-name-head'> Hosted by: </p>
                                         <p id='content-main-resort-name'> {host.username} </p>
                                     </div>
-                                    <div>
+                                    <div id='content-main-resort-about'>
                                         <span id='content-main-resort-details-head'>About the property: </span>
                                         <p id='content-main-resort-details'> {resort.details}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className='bottom-amenities-section-container'>
-                                <p>Amenities: </p>
+                                <p id='bottom-amenities-header'>Amenities: </p>
                                     <div className='bottom-amenities-section-body'>
                                         <ul className='bottom-amenities-section-ul'>
                                             {amenities.map((amenitie) => {

@@ -62,7 +62,7 @@ function SplashPage() {
                 </div>
                 <div className="banner-sec-container">
                     <div className="content-container-1">
-                        <a className="content-container-explore-pages" href="/resort">
+                        <a className="content-container-explore-pages" href="/results/California/1">
                             <img className="explore-image-home" src="https://img1.10bestmedia.com/Images/Photos/387266/Resort-Horizontal-Credit-The-Resort-at-Pelican-Hill_54_990x660.jpg" alt='california'/>
                             <div className="content-label-1">
                                 <div className="explore-content-text">
@@ -70,13 +70,13 @@ function SplashPage() {
                                     <p className="bottom-explore-bold-text">Explore California and Enjoy the sunny beaches</p>
                                 </div>
                                 <div className="explore-content-text-btn">
-                                    <button className="button-explore-main">Explore All</button>
+                                    <button className="button-explore-main">Explore Cali</button>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div className="content-container-1 secondHome">
-                        <a className="content-container-explore-pages" href="/resort">
+                        <a className="content-container-explore-pages" href="/results/Miami/1">
                             <img className="explore-image-home" src="https://a.cdn-hotels.com/gdcs/production2/d1821/71438820-8f10-11e8-b6b0-0242ac110007.jpg" alt='miami' />
                             <div className="content-label-1">
                                 <div className="explore-content-text">
