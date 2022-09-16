@@ -66,19 +66,25 @@ function ResortDetails() {
                         <div className='content-container-left'>
                             <div className='content-container-main'>
                                 <div id="content-main-details-container">
+                                    <hr style={{width: '100%'}}></hr>
                                     <div id='content-main-resort-host'>
-                                        <img className="host-details-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png" />
-                                        <p id='content-main-resort-name-head'> Hosted by: </p>
-                                        <p id='content-main-resort-name'> {host.username} </p>
+                                        <div className='host-detailts-left-content' >
+                                            <img className="host-details-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png" />
+                                            <div className='host-details-name-head'>
+                                                <span id='content-main-resort-name-head'> Hosted by {host.username} </span>
+                                                <p id='content-main-resort-name'> Nationality: {host.nationality} </p>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <hr style={{width: '100%'}}></hr>
                                     <div id='content-main-resort-about'>
-                                        <span id='content-main-resort-details-head'>About the property: </span>
+                                        {/* <span id='content-main-resort-details-head'>About the property: </span> */}
                                         <p id='content-main-resort-details'> {resort.details}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className='bottom-amenities-section-container'>
-                                <p id='bottom-amenities-header'>Amenities: </p>
+                                <p id='bottom-amenities-header'>Amenities </p>
                                     <div className='bottom-amenities-section-body'>
                                         <ul className='bottom-amenities-section-ul'>
                                             {amenities.map((amenitie) => {
@@ -86,7 +92,7 @@ function ResortDetails() {
                                                     <div className='amenities-details-container'>
                                                         <li key={amenitie.id} className="amenities-details-list-item">
                                                             <img id='amenities-image' src={amenitie.pictureUrl} alt="Amenitie picture"/>
-                                                            <p>{amenitie.name}</p>
+                                                            <p id='amenities-text-name'>{amenitie.name}</p>
                                                         </li>
                                                     </div>
                                                 )
