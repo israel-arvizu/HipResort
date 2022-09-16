@@ -60,7 +60,7 @@ function ProfilePage(){
                         </div>
                     </div>
                 </div>
-                <div className="profile-user-second-square">
+                <div className="profile-user-second-square third">
                     <div className="profile-user-second-square-content">
                         <div className="third-square-header">
                             <p id="second-square-title">Reservation Upcoming</p>
