@@ -31,7 +31,7 @@ function BookingButton({resort, id}) {
   return (
         <ul className="resort-booking-date-container">
           <form onSubmit={bookResort}>
-            <ul>
+            <ul className="booking-container-form">
               {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <div className="resort-booking-date-widget">
@@ -58,7 +58,7 @@ function BookingButton({resort, id}) {
               </div>
             </div>
             <div className="booking-date-button-container">
-              <button className="calendar-submit-button" type="submit">Book today!</button>
+              <button className="calendar-submit-button" type="submit">Book now</button>
             </div>
           </form>
         </ul>

@@ -1,18 +1,22 @@
 .body-container-main{
     display: flex;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: #f3f3f3;
 }
 
 .details-main-container-outer{
     width: 100%;
+    max-width: 800px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 15px;
 }
 
 .main-body-image-container{
     width: 90%;
+    display: flex;
+    justify-content: center;
 }
 
 .main-details-title-container{
@@ -20,12 +24,13 @@
 }
 
 .main-body-image{
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    max-width: 800px;
+    min-width: 751px;
     object-fit: fill;
     border: 5px transparent rgb(88, 87, 87);
     border-radius: 15px;
-    box-shadow: -5px 5px 3px 1px rgb(199, 198, 198);
+    /* box-shadow: -5px 5px 3px 1px rgb(199, 198, 198); */
 }
 
 .left-section-outer{
@@ -61,24 +66,26 @@
 
 #content-main-details-container{
     display: flex;
-    flex-direction: row;
-    max-width: 660px;
-    width: 80%;
+    flex-direction: column;
+    width: 100%;
 }
 
 #content-main-resort-details{
     margin-top: 1%;
     width: 100%;
     /* margin-left: 1%; */
-    font-weight: 300;
+    font-weight: 400;
 }
 
 #content-main-resort-about{
-    width: 70%;
+    width: 95%;
 }
 
 #content-main-resort-host{
-    width: 150px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .content-main-location{
@@ -93,21 +100,44 @@
 }
 
 .host-details-image{
-    max-width: 60%
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+}
+
+.host-details-name-head{
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.host-detailts-left-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #content-main-resort-name-head{
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 1px;
-    color: rgb(135, 137, 138);
+    font-weight: 500;
+    color: rgb(0, 0, 0);
 }
 
 #content-main-resort-name{
     margin-top: 1px;
+    font-weight: 300;
 }
 
 #line-break-details{
     width: 750px;
+}
+
+#bottom-amenities-header{
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .bottom-amenities-section-container{
@@ -122,6 +152,7 @@
 .amenities-details-container{
     max-width: fit-content;
     list-style: none;
+    padding: 5px;
 }
 
 .bottom-amenities-section-body{
@@ -132,16 +163,23 @@
 .amenities-details-list-item{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
+    text-align: center;
 }
 
 .bottom-amenities-section-ul{
+    display: flex;
+    flex-direction: row;
     padding-left: 0px;
+}
+
+#amenities-text-name{
+    margin-top: 0px;
 }
 
 .content-container-right{
     border: 1px solid rgb(192, 190, 190);;
-    margin-top: 5%;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -149,6 +187,7 @@
     width: 250px;
     height: fit-content;
     box-shadow: -2px 1px 4px 1px rgb(175, 174, 174);
+    background-color: #f3f2ef;
 }
 
 #bottom-amenities-header{
@@ -225,7 +264,7 @@
 }
 
 .calendar-submit-button{
-    background-color: #40D9AC;
+    background-color: #00c585;
     color: whitesmoke;
     border: none;
     width: 230px;
@@ -255,4 +294,11 @@
 
 .calendar-submit-button:hover{
     cursor: pointer;
+}
+
+.booking-container-form{
+    list-style-type: none;
+    padding: 0px 5px 10px 5px;
+    text-align: center;
+    color: red;
 }
